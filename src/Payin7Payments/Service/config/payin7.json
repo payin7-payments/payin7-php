@@ -1,0 +1,7 @@
+{
+  "name": "Payin7 API",
+  "description": "Payin7 API",
+  "includes": [
+    "payin7_public.json"
+  ]
+}

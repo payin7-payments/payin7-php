@@ -1,0 +1,140 @@
+{
+  "name": "Payin7 API (Platform Config)",
+  "description": "Payin7 API (Platform Config)",
+  "operations": {
+    "getPlatformStatus": {
+      "httpMethod": "GET",
+      "responseClass": "PlatformStatusModel",
+      "summary": "Gets the status of the Payin7 Platform",
+      "uri": "/payin7_platform/status"
+    },
+    "getPlatformConfig": {
+      "httpMethod": "GET",
+      "responseClass": "PlatformConfigModel",
+      "summary": "Gets the config of the Payin7 Platform",
+      "uri": "/payin7_platform/config"
+    }
+  },
+  "models": {
+    "PlatformStatusModel": {
+      "type": "object",
+      "properties": {
+        "platform": {
+          "type": "array",
+          "location": "json",
+          "items": {
+            "type": "object",
+            "properties": {
+              "state": {
+                "type": "boolean",
+                "location": "json"
+              }
+            }
+          }
+        },
+        "integration": {
+          "type": "array",
+          "location": "json",
+          "items": {
+            "type": "object",
+            "properties": {
+              "state": {
+                "type": "boolean",
+                "location": "json"
+              }
+            }
+          }
+        },
+        "payment_methods": {
+          "type": "array",
+          "location": "json",
+          "items": {
+            "type": "object",
+            "properties": {
+              "payin7": {
+                "type": "boolean",
+                "location": "json"
+              },
+              "monthly_installments": {
+                "type": "boolean",
+                "location": "json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "PlatformConfigModel": {
+      "type": "object",
+      "properties": {
+        "payment_methods": {
+          "type": "array",
+          "location": "json",
+          "items": {
+            "type": "object",
+            "properties": {
+              "payin7": {
+                "type": "array",
+                "location": "json",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "logo": {
+                      "type": "string",
+                      "location": "json"
+                    },
+                    "checkout_content": {
+                      "type": "string",
+                      "location": "json"
+                    },
+                    "more_info_content": {
+                      "type": "string",
+                      "location": "json"
+                    },
+                    "minimum_amount": {
+                      "type": "double",
+                      "location": "json"
+                    },
+                    "maximum_amount": {
+                      "type": "double",
+                      "location": "json"
+                    }
+                  }
+                }
+              },
+              "monthly_installments": {
+                "type": "array",
+                "location": "json",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "logo": {
+                      "type": "string",
+                      "location": "json"
+                    },
+                    "checkout_content": {
+                      "type": "string",
+                      "location": "json"
+                    },
+                    "more_info_content": {
+                      "type": "string",
+                      "location": "json"
+                    },
+                    "minimum_amount": {
+                      "type": "double",
+                      "location": "json"
+                    },
+                    "maximum_amount": {
+                      "type": "double",
+                      "location": "json"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

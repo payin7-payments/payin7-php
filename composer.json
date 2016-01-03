@@ -1,0 +1,26 @@
+{
+  "name": "payin7/payin7-php",
+  "description": "Payin7 API client built on top of Guzzle",
+  "keywords": [
+    "payin7",
+    "payin7.com",
+    "api",
+    "guzzle"
+  ],
+  "license": "Apache Version 2",
+  "authors": [
+    {
+      "name": "Payin7.com",
+      "homepage": "http://www.payin7.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "guzzle/guzzle": "~3.9"
+  },
+  "autoload": {
+    "psr-0": {
+      "Payin7Payments": "src/"
+    }
+  }
+}
