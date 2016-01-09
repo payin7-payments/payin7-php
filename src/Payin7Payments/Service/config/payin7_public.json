@@ -4,6 +4,7 @@
   "baseUrl": "https://api.payin7.com/",
   "description": "Payin7 PHP API",
   "includes": [
-    "payin7_public_platform.json"
+    "payin7_public_platform.json",
+    "payin7_public_orders.json"
   ]
 }

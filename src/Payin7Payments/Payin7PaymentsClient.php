@@ -2,9 +2,13 @@
 namespace Payin7Payments;
 
 use Guzzle\Common\Collection;
+use Guzzle\Http\Message\Request;
+use Guzzle\Http\Message\Response;
 use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
 use InvalidArgumentException;
+use Payin7Payments\Exception\Payin7APIException;
+use Symfony\Component\EventDispatcher\Event;
 
 class Payin7PaymentsClient extends Client
 {
@@ -58,8 +62,17 @@ class Payin7PaymentsClient extends Client
         $this->setDefaultOption('connect_timeout', $config->get('connect_timeout'));
         $this->setDefaultOption('timeout', $config->get('timeout'));
 
+        $this->setDefaultOption(
+            'auth',
+            [
+                $config->get('integration_id'),
+                $config->get('integration_key'),
+                'Basic'
+            ]
+        );
+
         $this->setDescription($this->getServiceDescriptionFromFile($config->get('service_description')));
-        //$this->setErrorHandler();
+        $this->setErrorHandler();
     }
 
     public function getServiceDescriptionFromFile($description_file)
@@ -71,7 +84,7 @@ class Payin7PaymentsClient extends Client
         return ServiceDescription::factory($description_file);
     }
 
-    /*private function setErrorHandler()
+    private function setErrorHandler()
     {
         $this->getEventDispatcher()->addListener(
             'request.error',
@@ -79,14 +92,20 @@ class Payin7PaymentsClient extends Client
                 // Stop other events from firing when you override 401 responses
                 $event->stopPropagation();
 
-                if ($event['response']->getStatusCode() >= 400 && $event['response']->getStatusCode() < 600) {
-                    $e = IntercomException::factory($event['request'], $event['response']);
-                    $event['request']->setState(Request::STATE_ERROR, array('exception' => $e) + $event->toArray());
+                /** @var Response $response */
+                $response = $event['response'];
+
+                /** @var Request $request */
+                $request = $event['request'];
+
+                if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 600) {
+                    $e = Payin7APIException::factory($request, $response);
+                    $request->setState(Request::STATE_ERROR, array('exception' => $e) + $event->toArray());
                     throw $e;
                 }
             }
         );
-    }*/
+    }
 
     public static function getDefaultConfig()
     {
