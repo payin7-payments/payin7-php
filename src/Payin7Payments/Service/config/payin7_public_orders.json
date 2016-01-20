@@ -51,13 +51,13 @@
           "type": "string"
         }
       },
-      "responseClass": "PostOrderResponseModel",
+      "responseClass": "OrderStatusResponseModel",
       "summary": "Posts a new order to the Payin7 system. If it already exists (recognized by the unique order id) only status is returned.",
-      "uri": "/payin7_orders/post_order"
+      "uri": "/orders/post_order"
     }
   },
   "models": {
-    "PostOrderResponseModel": {
+    "OrderStatusResponseModel": {
       "type": "object",
       "properties": {
         "payin7_order_id": {
@@ -69,6 +69,14 @@
           "location": "json"
         },
         "state": {
+          "type": "string",
+          "location": "json"
+        },
+        "is_accepted": {
+          "type": "boolean",
+          "location": "json"
+        },
+        "access_token": {
           "type": "string",
           "location": "json"
         },

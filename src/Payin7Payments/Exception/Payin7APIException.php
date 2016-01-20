@@ -133,7 +133,7 @@ class Payin7APIException extends BadResponseException
             }
         }
 
-        $message .= ($vv ? "\n\n- " . implode('- ', $vv) : null);
+        $message .= ($vv ? ":\n\n- " . implode("\n -", $vv) : null);
 
         return $message;
     }
