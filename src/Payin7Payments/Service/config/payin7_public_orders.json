@@ -53,7 +53,7 @@
       },
       "responseClass": "PostOrderResponseModel",
       "summary": "Posts a new order to the Payin7 system. If it already exists (recognized by the unique order id) only status is returned.",
-      "uri": "/payin7_orders/post_order"
+      "uri": "/orders/post_order"
     }
   },
   "models": {

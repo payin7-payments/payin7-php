@@ -6,13 +6,13 @@
       "httpMethod": "GET",
       "responseClass": "PlatformStatusModel",
       "summary": "Gets the status of the Payin7 Platform",
-      "uri": "/payin7_platform/status"
+      "uri": "/platform/status"
     },
     "getPlatformConfig": {
       "httpMethod": "GET",
       "responseClass": "PlatformConfigModel",
       "summary": "Gets the config of the Payin7 Platform",
-      "uri": "/payin7_platform/config"
+      "uri": "/platform/config"
     }
   },
   "models": {
