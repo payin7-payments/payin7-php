@@ -51,6 +51,18 @@ class Payin7PaymentsClient extends Client
         return $client;
     }
 
+    public function setConnectTimeout($timeout)
+    {
+        // TODO: Verify if these two values are being passed correctly!
+        $this->setDefaultOption('connect_timeout', $timeout);
+    }
+
+    public function setTimeout($timeout)
+    {
+        // TODO: Verify if these two values are being passed correctly!
+        $this->setDefaultOption('timeout', $timeout);
+    }
+
     /**
      * @param Collection $config
      */
