@@ -1,0 +1,102 @@
+{
+  "name": "Payin7 API (Platform Config)",
+  "description": "Payin7 API (Platform Config)",
+  "operations": {
+    "postOrder": {
+      "httpMethod": "POST",
+      "parameters": {
+        "order_id": {
+          "location": "postField",
+          "required": true,
+          "type": "string"
+        },
+        "payment_method": {
+          "location": "postField",
+          "required": true,
+          "type": "string"
+        },
+        "ordered_by_ip_address": {
+          "location": "postField",
+          "required": true,
+          "type": "string"
+        },
+        "source": {
+          "location": "postField",
+          "required": true,
+          "type": "string"
+        },
+        "order": {
+          "location": "postField",
+          "required": true,
+          "type": "string"
+        },
+        "items": {
+          "location": "postField",
+          "required": true,
+          "type": "string"
+        },
+        "addresses": {
+          "location": "postField",
+          "required": true,
+          "type": "string"
+        },
+        "customer": {
+          "location": "postField",
+          "required": true,
+          "type": "string"
+        },
+        "sysinfo": {
+          "location": "postField",
+          "required": false,
+          "type": "string"
+        }
+      },
+      "responseClass": "OrderStatusResponseModel",
+      "summary": "Posts a new order to the Payin7 system. If it already exists (recognized by the unique order id) only status is returned.",
+      "uri": "/orders/post_order"
+    },
+    "postOrderHistory": {
+      "httpMethod": "POST",
+      "parameters": {
+        "history": {
+          "location": "postField",
+          "required": true,
+          "type": "string"
+        }
+      },
+      "summary": "Posts pending order history changes from the local environment to the Payin7 system.",
+      "uri": "/orders/post_order_history"
+    }
+  },
+  "models": {
+    "OrderStatusResponseModel": {
+      "type": "object",
+      "properties": {
+        "payin7_order_id": {
+          "type": "string",
+          "location": "json"
+        },
+        "stored_on": {
+          "type": "string",
+          "location": "json"
+        },
+        "state": {
+          "type": "string",
+          "location": "json"
+        },
+        "is_accepted": {
+          "type": "boolean",
+          "location": "json"
+        },
+        "access_token": {
+          "type": "string",
+          "location": "json"
+        },
+        "created": {
+          "type": "boolean",
+          "location": "json"
+        }
+      }
+    }
+  }
+}
