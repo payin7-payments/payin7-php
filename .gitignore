@@ -1,4 +1,5 @@
 build/
+vendor/
 phpunit.xml
 composer.lock
 *.swp
