@@ -137,6 +137,7 @@ class Payin7PaymentsClient extends Client
 
                 if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 600) {
                     $e = Payin7APIException::factory($request, $response);
+                    /** @noinspection PhpUndefinedMethodInspection */
                     $request->setState(Request::STATE_ERROR, array('exception' => $e) + $event->toArray());
                     throw $e;
                 }
