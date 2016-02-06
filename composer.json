@@ -7,7 +7,7 @@
     "api",
     "guzzle"
   ],
-  "license": "Apache Version 2",
+  "license": "General Public License, version 3 (GPL-3.0)",
   "authors": [
     {
       "name": "Payin7.com",
@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "php": ">=5.4.0",
+    "php": ">=5.4.6",
     "guzzle/guzzle": "~3.9"
   },
   "autoload": {
