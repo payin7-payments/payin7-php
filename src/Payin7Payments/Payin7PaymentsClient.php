@@ -78,13 +78,11 @@ class Payin7PaymentsClient extends Client
 
     public function setConnectTimeout($timeout)
     {
-        // TODO: Verify if these two values are being passed correctly!
         $this->setDefaultOption('connect_timeout', $timeout);
     }
 
     public function setTimeout($timeout)
     {
-        // TODO: Verify if these two values are being passed correctly!
         $this->setDefaultOption('timeout', $timeout);
     }
 
@@ -95,7 +93,6 @@ class Payin7PaymentsClient extends Client
     {
         $this->setDefaultOption('headers', $config->get('headers'));
 
-        // TODO: Verify if these two values are being passed correctly!
         $this->setDefaultOption('connect_timeout', $config->get('connect_timeout'));
         $this->setDefaultOption('timeout', $config->get('timeout'));
 
