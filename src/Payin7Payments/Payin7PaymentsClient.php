@@ -55,16 +55,16 @@ class Payin7PaymentsClient extends Client
     /**
      * @var array
      */
-    private static $required_configs = [
+    private static $required_configs = array(
         'integration_id',
         'integration_key'
-    ];
+    );
 
     /**
      * @param array $config
      * @return Payin7PaymentsClient
      */
-    public static function getInstance($config = [])
+    public static function getInstance($config = array())
     {
         $client = new self();
 
@@ -98,11 +98,11 @@ class Payin7PaymentsClient extends Client
 
         $this->setDefaultOption(
             'auth',
-            [
+            array(
                 $config->get('integration_id'),
                 $config->get('integration_key'),
                 'Basic'
-            ]
+            )
         );
 
         $this->setDescription($this->getServiceDescriptionFromFile($config->get('service_description')));
@@ -144,15 +144,15 @@ class Payin7PaymentsClient extends Client
 
     public static function getDefaultConfig()
     {
-        return [
+        return array(
             'service_description' => __DIR__ . '/Service/config/payin7.json',
-            'headers' => [
+            'headers' => array(
                 'Content-Type' => self::DEFAULT_CONTENT_TYPE,
                 'Accept' => self::DEFAULT_ACCEPT_HEADER,
                 'User-Agent' => self::USER_AGENT
-            ],
+            ),
             'connect_timeout' => self::DEFAULT_CONNECT_TIMEOUT,
             'timeout' => self::DEFAULT_TIMEOUT
-        ];
+        );
     }
 }
