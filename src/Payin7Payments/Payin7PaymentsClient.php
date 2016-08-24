@@ -43,8 +43,12 @@ class Payin7PaymentsClient extends Client
     /** @var string */
     const DEFAULT_ACCEPT_HEADER = 'application/json';
 
+    const API_VER = 2;
+
     /** @var string */
-    const USER_AGENT = 'payin7-php/1.0.0';
+    const USER_AGENT = 'payin7-php/1.0.1';
+
+    const API_VER_HEADER = 'X-Api-Ver';
 
     /** @var int */
     const DEFAULT_CONNECT_TIMEOUT = 60;
@@ -91,7 +95,11 @@ class Payin7PaymentsClient extends Client
      */
     protected function configure($config)
     {
-        $this->setDefaultOption('headers', $config->get('headers'));
+        $headers = array_merge((array)$config->get('headers'), array(
+            self::API_VER_HEADER => self::API_VER
+        ));
+
+        $this->setDefaultOption('headers', $headers);
 
         $this->setDefaultOption('connect_timeout', $config->get('connect_timeout'));
         $this->setDefaultOption('timeout', $config->get('timeout'));
@@ -105,6 +113,7 @@ class Payin7PaymentsClient extends Client
             )
         );
 
+        /** @noinspection PhpParamsInspection */
         $this->setDescription($this->getServiceDescriptionFromFile($config->get('service_description')));
         $this->setErrorHandler();
     }
