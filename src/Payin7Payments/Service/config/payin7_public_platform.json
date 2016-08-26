@@ -83,6 +83,10 @@
                       "type": "string",
                       "location": "json"
                     },
+                    "title": {
+                      "type": "string",
+                      "location": "json"
+                    },
                     "checkout_content": {
                       "type": "string",
                       "location": "json"
@@ -109,6 +113,10 @@
                   "type": "object",
                   "properties": {
                     "logo": {
+                      "type": "string",
+                      "location": "json"
+                    },
+                    "title": {
                       "type": "string",
                       "location": "json"
                     },
