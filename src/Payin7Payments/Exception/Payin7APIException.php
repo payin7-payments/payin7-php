@@ -46,7 +46,6 @@ class Payin7APIException extends BadResponseException
     public static function factory(RequestInterface $request, Response $response)
     {
         $response_json = $response->json();
-        $generic_error = null;
         $cls = null;
 
         $is_lc_error = static::isLCApiError($response_json);
@@ -82,12 +81,12 @@ class Payin7APIException extends BadResponseException
             $err_message = 'Server communication error';
         }
 
+        $cls = __CLASS__;
+
         if ($is_lc_error) {
             $cls = __NAMESPACE__ . '\\ClientErrorResponseException';
         } elseif ($response->isClientError()) {
             $cls = __NAMESPACE__ . '\\ServerErrorResponseException';
-        } else {
-            $cls = __CLASS__;
         }
 
         /** @var Payin7APIException $e */

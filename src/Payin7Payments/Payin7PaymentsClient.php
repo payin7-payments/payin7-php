@@ -72,7 +72,7 @@ class Payin7PaymentsClient extends Client
     {
         $client = new self();
 
-        $config = Collection::fromConfig($config, $client->getDefaultConfig(), static::$required_configs);
+        $config = Collection::fromConfig($config, $client::getDefaultConfig(), static::$required_configs);
 
         $client->configure($config);
         $client->setUserAgent(self::USER_AGENT, true);
@@ -141,7 +141,9 @@ class Payin7PaymentsClient extends Client
                 /** @var Request $request */
                 $request = $event['request'];
 
-                if ($response->getStatusCode() >= 400 && $response->getStatusCode() < 600) {
+                $status_code = $response->getStatusCode();
+
+                if ($status_code >= 400 && $status_code < 600) {
                     $e = Payin7APIException::factory($request, $response);
                     /** @noinspection PhpUndefinedMethodInspection */
                     $request->setState(Request::STATE_ERROR, array('exception' => $e) + $event->toArray());
